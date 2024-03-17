@@ -2,3 +2,6 @@ trained/
 .venv/
 .vscode/
 .ipynb*
+mlruns/*
+__pycache__/
+.terraform**

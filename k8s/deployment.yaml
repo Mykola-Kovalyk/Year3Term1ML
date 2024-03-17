@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-deployment
+  labels:
+    type: backend
+    app: ml
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      type: backend
+      app: ml
+  template:
+    metadata:
+      name: ml-pod
+      labels:
+        type: backend
+        app: ml
+    spec:
+      containers:
+        - name: ml-container
+          image: $CONTAINER
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 200m

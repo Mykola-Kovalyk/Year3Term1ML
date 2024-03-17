@@ -1,0 +1,25 @@
+name: My Project
+
+python_env: python_env.yaml
+# or
+# conda_env: my_env.yaml
+# or
+# docker_env:
+#    image:  mlflow-docker-example
+
+entry_points:
+  main:
+    parameters:
+      batch_size: int
+      learning_rate: float
+      epochs: int
+      path: {type: path, default: mnist_classifier.pth}
+      run_name: {type: str, default: ""}
+    command: "python train.py --batch_size {batch_size} --learning_rate {learning_rate} --num_epochs {epochs} --path {path} --run_name {run_name}"
+  validate:
+    parameters:
+      path: {type: path, default: mnist_classifier.pth}
+      run_name: {type: str, default: ""}
+    command: "python validate.py --path {path} --run_name {run_name}"
+  deploy:
+    command: "docker build -t mllab:latest ."
