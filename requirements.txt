@@ -1,0 +1,8 @@
+ipykernel
+numpy
+pandas
+tensorflow
+keras
+plotly
+nbformat>=4.2.0
+scikit-learn
